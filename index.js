@@ -1,13 +1,17 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
 require('dotenv').config();
+
+// Import Routes
+const postsRoute = require('./routes/posts');
+app.use('/posts', postsRoute);
 
 // home route
 app.get('/', (req, res) => {
@@ -26,9 +30,9 @@ mongoose.connect(
 );
 
 // app PORT
-const PORT = 7007;
+const port = process.env.PORT || 3005;
 
 // listen to port
-app.listen(`${PORT}`, () => {
-  console.log(`Server started on port${PORT}`);
+app.listen(`${port}`, () => {
+  console.log(`Server started on port: ${port}`);
 });
