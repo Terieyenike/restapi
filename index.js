@@ -30,9 +30,9 @@ mongoose.connect(
 );
 
 // app PORT
-const port = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3005;
 
 // listen to port
-app.listen(`${port}`, () => {
-  console.log(`Server started on port: ${port}`);
+app.listen(`${PORT}`, () => {
+  console.log(`Server started on port: ${PORT}`);
 });
